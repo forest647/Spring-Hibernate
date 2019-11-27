@@ -17,7 +17,7 @@ public class Address {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", unique = true, nullable = false)
-  private int id;
+  private Long id;
 
   @Column(name = "city")
   private String city;
@@ -26,7 +26,7 @@ public class Address {
   private String street;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "employee_id")
+  @JoinColumn(name = "person_id")
   private Person person;
 
   public Address() {
@@ -38,11 +38,11 @@ public class Address {
     this.person = person;
   }
 
-  public int getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(final int id) {
+  public void setId(final Long id) {
     this.id = id;
   }
 

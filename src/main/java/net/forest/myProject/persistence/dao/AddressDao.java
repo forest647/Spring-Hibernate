@@ -6,9 +6,9 @@ import net.forest.myProject.persistence.entity.Person;
 
 public interface AddressDao {
 
-   void create(final String city, final String street, final Person person);
+   void saveOrUpdate(final String city, final String street, final Person person);
 
-   void create(final Address address);
+   void saveOrUpdate(final Address address);
 
    List<Address> getAddressList(final Person person);
 }

@@ -5,7 +5,7 @@ import net.forest.myProject.persistence.entity.User;
 
 public interface PersonDao {
 
-  void create(final Person person);
+  void saveOrUpdate(final Person person);
 
   void readAll();
 

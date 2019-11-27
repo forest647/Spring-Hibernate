@@ -19,9 +19,9 @@ public class UserDaoImpl implements UserDao {
   private SessionFactory sessionFactory;
 
   @Override
-  public void create(final String username, final String password, final Person person) {
+  public void saveOrUpdate(final String username, final String password, final Person person) {
     final User user = new User(username, password);
-    new PersistenceOperations().Save(sessionFactory, user, "*** User created!");
+    new PersistenceOperations().saveOrUpdate(sessionFactory, user, "*** User saved!");
   }
 
   @SuppressWarnings("unchecked")
@@ -51,18 +51,13 @@ public class UserDaoImpl implements UserDao {
     try {
       user = (User) q.uniqueResult();
       if (user == null) {
-        System.out.println("User Not Found !");
+        System.out.println("User with username '" + username + "' Not Found !");
       }
     } catch (Exception ex) {
-      System.out.printf("Exception in getUser: %s", ex.getMessage());
+      System.out.printf("Exception in getUser: %s \n", ex.getMessage());
     }
 
     return user;
-  }
-
-  @Override
-  public void update() {
-
   }
 
   @Override

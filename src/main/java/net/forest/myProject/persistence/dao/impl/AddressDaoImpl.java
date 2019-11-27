@@ -20,14 +20,14 @@ public class AddressDaoImpl implements AddressDao {
   private SessionFactory sessionFactory;
 
   @Override
-  public void create(final String city, final String street, final Person person) {
+  public void saveOrUpdate(final String city, final String street, final Person person) {
     final Address address = new Address(city, street, person);
-    new PersistenceOperations().Save(sessionFactory, address, "*** Address created!");
+    saveOrUpdate(address);
   }
 
   @Override
-  public void create(final Address address) {
-    new PersistenceOperations().Save(sessionFactory, address, "*** Address created!");
+  public void saveOrUpdate(final Address address) {
+    new PersistenceOperations().saveOrUpdate(sessionFactory, address, "*** Address '" + address.getCity() + "' saved!");
   }
 
   @SuppressWarnings("unchecked")
@@ -44,7 +44,7 @@ public class AddressDaoImpl implements AddressDao {
         System.out.println("Address Not Found !");
       }
     } catch (Exception ex) {
-      System.out.printf("Exception in getAddressLIst: %s", ex.getMessage());
+      System.out.printf("Exception in getAddressLIst: %s \n", ex.getMessage());
     }
 
     return addressList;

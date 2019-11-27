@@ -5,10 +5,10 @@ import org.hibernate.SessionFactory;
 
 public class PersistenceOperations {
 
-  public void Save(final SessionFactory sessionFactory, final Object object, final String message) {
+  public void saveOrUpdate(final SessionFactory sessionFactory, final Object object, final String message) {
     Session session = sessionFactory.openSession();
     session.beginTransaction();
-    session.save(object);
+    session.saveOrUpdate(object);
     session.getTransaction().commit();
     System.out.println(message);
     session.close();

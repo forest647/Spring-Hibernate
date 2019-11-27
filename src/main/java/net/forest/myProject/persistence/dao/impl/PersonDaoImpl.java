@@ -19,8 +19,8 @@ public class PersonDaoImpl implements PersonDao {
   private SessionFactory sessionFactory;
 
   @Override
-  public void create(final Person person) {
-    new PersistenceOperations().Save(sessionFactory, person,"*** Employee created!");
+  public void saveOrUpdate(final Person person) {
+    new PersistenceOperations().saveOrUpdate(sessionFactory, person,"*** Person '" + person.getFirstName() + "' saved!");
   }
 
   @SuppressWarnings("unchecked")
@@ -45,12 +45,12 @@ public class PersonDaoImpl implements PersonDao {
 
     try {
       person = (Person) q.uniqueResult();
-      if (user == null){
-        System.out.println("Person Not Found !");
+      if (person == null){
+        System.out.println("Person with username '" + user.getUsername() + "' Not Found !");
       }
     }
     catch (Exception ex){
-      System.out.printf("Exception in getPerson: %s", ex.getMessage());
+      System.out.printf("Exception in getPerson: %s \n", ex.getMessage());
     }
 
     return person;
