@@ -1,6 +1,5 @@
 package net.forest.myProject.persistence.entity;
 
-import javax.jws.soap.SOAPBinding.Use;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,7 +32,7 @@ public class Person {
   public Person() {
   }
 
-  public Person(String firstName, String lastName, User user) {
+  public Person(final String firstName, final String lastName, User user) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.user = user;
@@ -43,31 +42,31 @@ public class Person {
     return id;
   }
 
+  public void setId(final int id) {
+    this.id = id;
+  }
+
   public String getFirstName() {
     return firstName;
+  }
+
+  public void setFirstName(final String firstName) {
+    this.firstName = firstName;
   }
 
   public String getLastName() {
     return lastName;
   }
 
+  public void setLastName(final String lastName) {
+    this.lastName = lastName;
+  }
+
   public User getUser() {
     return user;
   }
 
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
-
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
-
-  public void setUser(User user) {
+  public void setUser(final User user) {
     this.user = user;
   }
 }

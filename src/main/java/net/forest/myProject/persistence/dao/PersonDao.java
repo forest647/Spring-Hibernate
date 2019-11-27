@@ -5,9 +5,9 @@ import net.forest.myProject.persistence.entity.User;
 
 public interface PersonDao {
 
-  void create(Person detail);
+  void create(final Person person);
 
   void readAll();
 
-  Person getPerson(User user);
+  Person getPerson(final User user);
 }

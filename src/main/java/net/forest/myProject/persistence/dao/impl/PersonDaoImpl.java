@@ -16,28 +16,29 @@ import org.springframework.stereotype.Repository;
 public class PersonDaoImpl implements PersonDao {
 
   @Autowired
-  SessionFactory sessionFactory;
+  private SessionFactory sessionFactory;
 
   @Override
-  public void create(Person detail) {
-    new PersistenceOperations().Save(sessionFactory, detail,"*** Employee created!");
+  public void create(final Person person) {
+    new PersistenceOperations().Save(sessionFactory, person,"*** Employee created!");
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public void readAll() {
-    List<Person> detailList = sessionFactory.getCurrentSession().createCriteria(Person.class).list();
+    final List<Person> detailList = sessionFactory.getCurrentSession().createCriteria(Person.class).list();
 
     System.out.println("************ ALL PERSONs ****************");
 
-    for (Person detail : detailList){
+    for (final Person detail : detailList){
       System.out.printf("*** Id:%s \t Firstname:%s \t Lastname:%s \n", detail.getId(), detail.getFirstName(),
           detail.getLastName());
     }
   }
 
   @Override
-  public Person getPerson(User user){
-    Query q = sessionFactory.getCurrentSession().createQuery("FROM Person WHERE user=:user");
+  public Person getPerson(final User user){
+    final Query q = sessionFactory.getCurrentSession().createQuery("FROM Person WHERE user=:user");
     q.setParameter("user", user);
 
     Person person = null;

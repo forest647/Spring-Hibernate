@@ -10,42 +10,41 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Application {
 
   public static void main(String[] args) {
-    ApplicationContext appContext =
+    final ApplicationContext appContext =
         new ClassPathXmlApplicationContext("applicationContext.xml");
 
-    UserDao userDao = appContext.getBean(UserDao.class);
-    PersonDao personDao = appContext.getBean(PersonDao.class);
-    AddressDao addressDao = appContext.getBean(AddressDao.class);
-
+    final UserDao userDao = appContext.getBean(UserDao.class);
+    final PersonDao personDao = appContext.getBean(PersonDao.class);
+    final AddressDao addressDao = appContext.getBean(AddressDao.class);
     System.out.println("************************ START ************************");
 
-    User u1 = new User("aaaaaa","ssssss");
+    final User user1 = new User("aaaaaa", "ssssss");
 
-    Person p1 = new Person("Ionel", "Padure", u1);
-    Person p2 = new Person("Viorel", "Dura", new User("ddddd", "ffffff"));
+    final Person person1 = new Person("Ionel", "Padure", user1);
+    final Person person2 = new Person("Viorel", "Dura", new User("ddddd", "ffffff"));
 
-    Address a1 = new Address("Sibiu", "Strada Lunga nr 12", p1);
+    final Address a1 = new Address("Sibiu", "Strada Lunga nr 12", person1);
 
-    personDao.create(p1);
-    personDao.create(p2);
+    personDao.create(person1);
+    personDao.create(person2);
 
     addressDao.create(a1);
-    addressDao.create("Cluj", "Str Louis Pasteur 23/32", p1);
+    addressDao.create("Cluj", "Str Louis Pasteur 23/32", person1);
 
     personDao.readAll();
     userDao.readAll();
 
     userDao.getUser("aaaaaa", "wrong_password");
 
-    User user = userDao.getUser("aaaaaa", "ssssss");
+    final User user = userDao.getUser("aaaaaa", "ssssss");
 
     personDao.getPerson(null);
 
-    Person p3 = personDao.getPerson(user);
+    final Person person3 = personDao.getPerson(user);
 
-    System.out.printf("Searched person is: %s %s and the addresses are: \n", p3.getFirstName(), p3.getLastName());
+    System.out.printf("Searched person1 is: %s %s and the addresses are: \n", person3.getFirstName(), person3.getLastName());
 
-    for (Address address: addressDao.getAddressList(p3)) {
+    for (Address address : addressDao.getAddressList(person3)) {
       System.out.printf("City:%s Street:%s \n", address.getCity(), address.getStreet());
     }
 

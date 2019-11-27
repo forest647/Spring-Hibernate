@@ -7,13 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "address")
 public class Address {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id", unique = true, nullable = false)
@@ -32,7 +32,7 @@ public class Address {
   public Address() {
   }
 
-  public Address(String city, String street, Person person) {
+  public Address(final String city, final String street, final  Person person) {
     this.city = city;
     this.street = street;
     this.person = person;
@@ -42,31 +42,31 @@ public class Address {
     return id;
   }
 
+  public void setId(final int id) {
+    this.id = id;
+  }
+
   public String getCity() {
     return city;
+  }
+
+  public void setCity(final String city) {
+    this.city = city;
   }
 
   public String getStreet() {
     return street;
   }
 
+  public void setStreet(final String street) {
+    this.street = street;
+  }
+
   public Person getPerson() {
     return person;
   }
 
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public void setCity(String city) {
-    this.city = city;
-  }
-
-  public void setStreet(String street) {
-    this.street = street;
-  }
-
-  public void setPerson(Person person) {
+  public void setPerson(final Person person) {
     this.person = person;
   }
 }

@@ -5,7 +5,7 @@ import net.forest.myProject.persistence.entity.User;
 
 public interface UserDao {
 
-   void create(String username, String password, Person employeeId);
+   void create(final String username, final String password, final Person person);
 
    void readAll();
 
@@ -13,5 +13,5 @@ public interface UserDao {
 
    void delete();
 
-   User getUser(String username, String password);
+   User getUser(final String username,final String password);
 }

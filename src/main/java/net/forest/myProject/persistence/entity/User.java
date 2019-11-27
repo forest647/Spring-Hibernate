@@ -33,9 +33,9 @@ public class User {
   )
   private Person person;
 
-  public User(){};
+  public User(){}
 
-  public User(String username, String password) {
+  public User(final String username, final String password) {
     this.username = username;
     this.password = password;
   }
@@ -44,31 +44,31 @@ public class User {
     return id;
   }
 
+  public void setId(int id) {
+    this.id = id;
+  }
+
   public String getUsername() {
     return username;
+  }
+
+  public void setUsername(final String username) {
+    this.username = username;
   }
 
   public String getPassword() {
     return password;
   }
 
+  public void setPassword(final String password) {
+    this.password = password;
+  }
+
   public Person getPerson() {
     return person;
   }
 
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public void setUsername(String username) {
-    this.username = username;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-  public void setPerson(Person person) {
+  public void setPerson(final Person person) {
     if (person == null) {
       if (this.person != null) {
         this.person.setUser(null);
