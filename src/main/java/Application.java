@@ -66,14 +66,14 @@ public class Application {
 
     System.out.printf("Searched person1 is: %s %s and the addresses are: \n", person3.getFirstName(), person3.getLastName());
 
-    for (Address address : addressDao.getAddressList(person3)) {
+    for (final Address address : addressDao.getAddressList(person3)) {
       System.out.printf("City:%s Street:%s \n", address.getCity(), address.getStreet());
     }
 
-    Set<Skill> skillSet = skillDao.getPersonSkills(person2);
+    final Set<Skill> skillSet = skillDao.getPersonSkills(person2);
 
     System.out.println("'" + person2.getFirstName()+ "' skills are: ");
-    for (Skill skill: skillSet) {
+    for (final Skill skill: skillSet) {
       System.out.printf("Skill: '%s' Description: '%s' \n", skill.getSkillName(), skill.getDescription());
     }
 

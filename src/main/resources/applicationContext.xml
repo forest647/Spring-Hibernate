@@ -17,8 +17,7 @@ http://www.springframework.org/schema/tx/spring-tx-4.3.xsd ">
 
   <context:component-scan
     base-package="net.forest.myProject.persistence.dao" />
-  <tx:annotation-driven
-    transaction-manager="transactionManager" />
+  <tx:annotation-driven/>
 
 
   <bean id="dataSource"

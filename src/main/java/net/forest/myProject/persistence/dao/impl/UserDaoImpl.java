@@ -36,7 +36,8 @@ public class UserDaoImpl implements UserDao {
           user.getId(),
           user.getUsername(),
           user.getPassword(),
-          user.getPerson().getFirstName() + " " + user.getPerson().getLastName());
+          user.getPerson().getFirstName() + " " +
+              user.getPerson().getLastName());
     }
   }
 
@@ -62,7 +63,7 @@ public class UserDaoImpl implements UserDao {
 
   @Override
   public void delete() {
-
+    //TODO
   }
 
 }

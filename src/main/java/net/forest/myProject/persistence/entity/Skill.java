@@ -62,7 +62,7 @@ public class Skill {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(final Long id) {
     this.id = id;
   }
 
@@ -70,7 +70,7 @@ public class Skill {
     return skillName;
   }
 
-  public void setSkill(String skill) {
+  public void setSkill(final String skill) {
     this.skillName = skill;
   }
 
@@ -78,7 +78,7 @@ public class Skill {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setDescription(final String description) {
     this.description = description;
   }
 
@@ -86,7 +86,7 @@ public class Skill {
     return persons;
   }
 
-  public void setPersons(Set<Person> persons) {
+  public void setPersons(final Set<Person> persons) {
     this.persons = persons;
   }
 }

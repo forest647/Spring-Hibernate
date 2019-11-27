@@ -52,7 +52,7 @@ public class SkillDaoImpl implements SkillDao {
   @SuppressWarnings("unchecked")
   @Override
   public Set<Skill> getPersonSkills(final Person person) {
-    Set<Skill> skillSet = new HashSet<>();
+    final Set<Skill> skillSet = new HashSet<>();
 
     final Query q = sessionFactory.getCurrentSession().createQuery("SELECT s FROM Person p JOIN p.skills s WHERE p.id=:personId");
     q.setParameter("personId", person.getId());
